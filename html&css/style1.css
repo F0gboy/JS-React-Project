@@ -1,0 +1,54 @@
+table {
+  width: 50%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #bb6c12;
+  color:white;
+  height: 50px;
+}
+
+td {
+  padding: 10px;
+}
+
+tr {
+  background-color: sandybrown;
+}
+
+tr:hover {
+  background-color: #e4b58c;
+}
+
+table, th, td {
+  border: 2px solid sienna;
+}
+
+#logo {
+  border: 3px solid red;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+body {
+  background-color: #d8b4cf;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+p {
+  font-size: smaller;
+}
+
+button {
+  padding: 20px;
+  border: 0px;
+  color: white;
+  background-color: rgb(75, 75, 75);
+}
+
+button:hover {
+  background-color: rgb(139, 0, 0);
+}

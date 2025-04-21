@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My site!</title>
+  <link id="linkStylesheet" rel="stylesheet" href="">
+</head>
+
+<body>
+  <img style="width: 300px;" id="logo" src="https://dkea.dk/sites/danskeerhvervsakademier.dk/files/styles/common_04/public/media/image/EA%20Dania_1.jpg">
+
+  <br>
+
+  <button id="btnNoStyle">No style</button>
+  <button id="btnStyle1">Style 1</button>
+  <button id="btnStyle2">Style 2</button>
+
+  <p><a href="header.html">A link to Giraff site!</a></p>
+
+  <h1>Welcome to my site</h1>
+  <h2>Welcome to my site</h2>
+  <h3>Welcome to my site</h3>
+  <h4>Welcome to my site</h4>
+  <h5>Welcome to my site</h5>
+  <h6>Welcome to my site</h6>
+
+  <hr>
+
+  <h3>Paragraphs of text:</h3>
+
+  <p>
+    Integer in metus ornare, ultricies erat non, venenatis odio. Cras cursus risus eu ipsum
+    fermentum porttitor. Duis ante neque, mollis sed blandit a, laoreet nec nibh. Phasellus
+    a est nec metus sagittis rutrum. Etiam ac ante ut magna finibus pellentesque et sit amet arcu.
+  </p>
+
+  <p>
+    Etiam pharetra diam nec nisl aliquet feugiat. Aenean tempor mollis quam, ac iaculis
+    libero accumsan nec. Aenean a neque porta, ultricies nibh vitae, ultricies ipsum.
+    Sed vitae elit neque. Aenean commodo aliquet eleifend. Vestibulum rutrum lobortis sollicitudin.
+  </p>
+
+  <h3>List of fruits</h3>
+  <ul>
+    <li>
+      <b>Apple</b>
+    </li>
+    <li>
+      <i>Strawberry</i>
+    </li>
+    <li>
+      <u>Mango</u>
+    </li>
+  </ul>
+
+  <h3>Fruit overview</h3>
+  <table>
+    <tr>
+      <th>Type</th>
+      <th>Price (DKK)</th>
+      <th>Stock</th>
+    </tr>
+    <tr>
+      <td>
+        <a href="https://en.wikipedia.org/wiki/Apple">Apple</a>
+      </td>
+      <td>6</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <td>Strawberry (box of 12)</td>
+      <td>24</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <td>Mango</td>
+      <td>18</td>
+      <td>72</td>
+    </tr>
+  </table>
+
+  <h3>Tags within other tags</h3>
+  <div>
+    <button><b>Bold text in button</b></button>
+    <p>Paragraph text <button>with</button> different tags inside</p>
+    <p>Here is a <a href="http://www.google.com">link to <i>GOOGLE</i></a></p>
+  </div>
+
+  <script>
+    let stylesheet = document.getElementById("linkStylesheet");
+    let btnNoStyle = document.getElementById("btnNoStyle");
+    let btnStyle1 = document.getElementById("btnStyle1");
+    let btnStyle2 = document.getElementById("btnStyle2");
+
+    btnNoStyle.onclick = () => stylesheet.href = "";
+    btnStyle1.onclick = () => stylesheet.href = "style1.css";
+    btnStyle2.onclick = () => stylesheet.href = "style2.css";
+  </script>
+</body>
+
+</html>

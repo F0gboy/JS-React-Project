@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Inheritance</title>
+</head>
+
+<body>
+  <script>
+
+    class NPC {
+      constructor(posX, posY, health) {
+        this.position = { x: posX, y: posY };
+        this.health = health;
+      }
+
+      isDead() { return this.health <= 0; }
+    }
+
+    class Vendor extends NPC {
+      constructor(posX, posY, health, inventory) {
+        super(posX, posY, health);
+        this.inventory = inventory;
+      }
+
+      hasItem(item) { return this.inventory.includes(item); }
+    }
+
+    class Guard extends NPC {
+      constructor(posX, posY, health, damage) {
+        super(posX, posY, health);
+        this.damage = damage;
+      }
+
+      attack(npc) { npc.health -= this.damage; }
+    }
+
+    let vendorA = new Vendor(10, 13, 100, ["Potion", "Axe", "Scroll", "Chestplate"]);
+    let vendorB = new Vendor(20, 23, 75, ["Sword", "Shield", "Bread", "Map"]);
+
+    let guardA = new Guard(10, 13, 100, 50);
+    let guardB = new Guard(20, 23, 75, 65);
+
+    guardA.attack(vendorA);
+    guardB.attack(vendorA);
+    console.log(vendorA.isDead());
+
+  </script>
+</body>
+
+</html>

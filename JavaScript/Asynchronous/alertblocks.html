@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Alert blocks</title>
+</head>
+
+<body>
+  <div id="container"></div>
+  <button id="myButton">Click me</button>
+
+  <script>
+
+    let divElement = document.getElementById("container");
+    let buttonElement = document.getElementById("myButton");
+
+    buttonElement.onclick = function () {
+      alert("Hello");
+      divElement.innerHTML = "<h1>Some dynamic header</h1>";
+    }
+    
+  </script>
+</body>
+
+</html>

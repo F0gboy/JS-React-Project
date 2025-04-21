@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Simple events</title>
+</head>
+
+<body>
+  <h1 id="changeMe">...</h1>
+  <button id="btnClickMe">Click me</button>
+  <script>
+    
+    var elementToChange = document.getElementById("changeMe");
+    var button = document.getElementById("btnClickMe");
+
+    button.onclick = function () {
+      var currentText = elementToChange.innerText;
+      if (currentText != "Hello")
+        elementToChange.innerText = "Hello";
+      else
+        elementToChange.innerText = "Goodbye";
+    }
+    
+  </script>
+</body>
+
+</html>

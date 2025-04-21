@@ -1,0 +1,59 @@
+* {
+  font-family: sans-serif
+}
+
+body {
+  background: no-repeat center fixed;
+  /* https://mycolor.space/gradient */
+  background-image: linear-gradient(to right bottom, #f0f0f0, #ece9ed, #ebe2e7, #ebdadf, #ebd3d3);
+}
+
+.mainContent {
+  background-color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top:10px;
+  padding-bottom: 20px;
+  border-radius: 25px;
+  box-shadow: 0 0 5px #000000;
+  width: 1020px;
+  margin: auto;
+}
+
+h1.recipeTitle {
+  font-weight: 900;
+  letter-spacing: 5px;
+  text-decoration: underline;
+  text-decoration-color: green;
+  text-decoration-style: wavy;
+}
+
+.ingredients {
+  border-radius: 25px;
+  background-color: #ebd3d3;
+  column-count: 2;
+  width: 1000px;
+  height: 450px;
+  padding-left: 20px;
+  box-shadow: 0 0 10px #6e4545;
+}
+
+#recipeFoto {
+  height: 450px;
+  float: right;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-left: 1px gray solid;
+}
+
+h1.howTo {
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: green;
+  text-decoration-style: solid;
+}
+
+div.howTo {
+  width: 40%;
+  text-indent: 10px;
+}

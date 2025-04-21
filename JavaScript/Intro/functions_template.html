@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Var scope</title>
+</head>
+
+<body>
+  ...
+
+  <script>
+
+    let arrayA = ["1", "to", 3, 4, null, 6, -7];
+    let arrayB = [true, "false", {}, "abc", 123, undefined, null, NaN];
+
+    function filterArray() {
+      // Implement
+    }
+
+    let numbersA = filterArray(arrayA, /* Filter-function (numbers) */);
+    let numbersB = filterArray(arrayB, /* Filter-function (numbers) */);
+    
+    let stringsA = filterArray(arrayA, /* Filter-function (strings) */);
+    let stringsB = filterArray(arrayB, /* Filter-function (strings) */);
+    
+    let othersA = filterArray(arrayA, /* Filter-function (other) */);
+    let othersB = filterArray(arrayB, /* Filter-function (other) */);
+
+    console.log("Numbers A success: " + isEqual(numbersA, [3, 4, 6]));
+    console.log("Strings A success: " + isEqual(stringsA, ["1", "to"]));
+    console.log("Others A success: " + isEqual(othersA, [null, -7]));
+
+    console.log("Numbers B success: " + isEqual(numbersB, [123]));
+    console.log("Strings B success: " + isEqual(stringsB, ["false", "abc"]));
+    console.log("Others B success: " + isEqual(othersB, [true, {}, undefined, null, NaN]));
+
+    function isEqual(a, b) { return JSON.stringify(a) === JSON.stringify(b); }
+
+  </script>
+</body>
+
+</html>

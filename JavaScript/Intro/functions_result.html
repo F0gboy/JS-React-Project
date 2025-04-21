@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Var scope</title>
+</head>
+
+<body>
+  ...
+
+  <script>
+
+    let arrayA = ["1", "to", 3, 4, null, 6, -7];
+    let arrayB = [true, "false", {}, "abc", 123, undefined, null, NaN];
+
+    function filterArray(array, callbackFilter) {
+      let resultArray = [];
+
+      array.forEach(element => {
+        let includeElement = callbackFilter(element);
+        if (includeElement) {
+          resultArray.push(element)
+        }
+      });
+
+      return resultArray;
+    }
+
+    let positiveNumbersFilter = item => {
+      let isNumber = typeof item === "number";
+      return isNumber && item >= 0;
+    };
+
+    let stringsFilter = item => {
+      let isString = typeof item === "string";
+      return isString;
+    };
+
+    let othersFilter = item => {
+      let isNumber = positiveNumbersFilter(item);
+      let isString = stringsFilter(item);
+      return !isNumber && !isString;
+    };
+
+    let numbersA = filterArray(arrayA, positiveNumbersFilter);
+    let stringsA = filterArray(arrayA, stringsFilter);
+    let othersA = filterArray(arrayA, othersFilter);
+
+    let numbersB = filterArray(arrayB, positiveNumbersFilter);
+    let stringsB = filterArray(arrayB, stringsFilter);
+    let othersB = filterArray(arrayB, othersFilter);
+
+    console.log("Numbers A success: " + isEqual(numbersA, [3, 4, 6]));
+    console.log("Strings A success: " + isEqual(stringsA, ["1", "to"]));
+    console.log("Others A success: " + isEqual(othersA, [null, -7]));
+
+    console.log("Numbers B success: " + isEqual(numbersB, [123]));
+    console.log("Strings B success: " + isEqual(stringsB, ["false", "abc"]));
+    console.log("Others B success: " + isEqual(othersB, [true, {}, undefined, null, NaN]));
+
+    function isEqual(a, b) { return JSON.stringify(a) === JSON.stringify(b); }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Class</title>
+</head>
+
+<body>
+  <script>
+
+    class NPCVendor {
+      constructor(posX, posY, health, inventory) {
+        this.position = { x: posX, y: posY };
+        this.health = health;
+        this.inventory = inventory;
+      }
+
+      isDead() { return this.health <= 0; }
+      hasItem(item) { return this.inventory.includes(item); }
+    }
+
+    let npcVendorA = new NPCVendor(10, 13, 100, ["Potion", "Axe", "Scroll", "Chestplate"]);
+    let npcVendorB = new NPCVendor(20, 23, 75, ["Sword", "Shield", "Bread", "Map"]);
+
+    console.log("Is dead: " + npcVendorA.isDead());
+    npcVendorA.health = 0;
+    console.log("Is dead: " + npcVendorA.isDead());
+
+    console.log("Has Scroll: " + npcVendorA.hasItem("Scroll"));
+    let scrollIndex = npcVendorA.inventory.indexOf("Scroll");
+    npcVendorA.inventory.splice(scrollIndex, 1);
+    console.log("Has Scroll: " + npcVendorA.hasItem("Scroll"));
+
+    for (properties in npcVendorA) {
+      console.log(npcVendorA[properties]);
+    }
+
+  </script>
+</body>
+
+</html>

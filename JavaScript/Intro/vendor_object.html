@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Object</title>
+</head>
+
+<body>
+  <script>
+
+    let npcVendor = {
+      position: { x: 10, y: 13 },
+      health: 100,
+      inventory: ["Potion", "Axe", "Scroll", "Chestplate"],
+      isDead: function () {
+        return this.health <= 0;
+      },
+      hasItem: function (item) {
+        return this.inventory.includes(item);
+      }
+    }
+
+    console.log("Is dead: " + npcVendor.isDead());
+    npcVendor.health = 0;
+    console.log("Is dead: " + npcVendor.isDead());
+
+    console.log("Has Scroll: " + npcVendor.hasItem("Scroll"));
+    npcVendor.inventory.pop();
+    console.log("Has Scroll: " + npcVendor.hasItem("Scroll"));
+
+    for (properties in npcVendor) {
+      console.log(npcVendor[properties]);
+    }
+
+  </script>
+</body>
+
+</html>

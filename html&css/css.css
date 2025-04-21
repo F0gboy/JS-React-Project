@@ -1,0 +1,24 @@
+
+/* Affects all <p> elements */
+p { font-family: Arial, Helvetica, sans-serif; }
+
+/* Only affects elements with the class "headline" */
+.headline { font-size: 2em; }
+
+/* Affects elements with class and <a> elements */
+.subsection, a { text-transform: uppercase; }
+
+/* Only affects the element with the id "farewell" */
+#farewell { font-weight: bolder; }
+
+/* Only affects <i> elements which are descendants of <div> elements*/
+div i { color:red; }
+
+/* Only affects <p> which are direct children of
+  <div> elements which have the class "content" */
+/* Note: no space between element and class! */
+div.content > p { padding-left: 25px; }
+
+p:hover {
+  border: 2px solid green;
+}
