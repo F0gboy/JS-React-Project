@@ -1,8 +1,14 @@
 // Login.js
 import React from 'react';
+import Post from '../Components/Post';
 
 function Home() {
-  return <h2> Home Page</h2>;
+  return (
+    <div>
+      <h1>Home Page</h1>
+      <Post />
+    </div>
+  );
 }
 
 export default Home;
