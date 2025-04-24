@@ -1,11 +1,12 @@
-// src/components/Header.jsx
+import React from 'react';
+
 function Header({ username }) {
-    return (
-      <header>
-        <h1>Velkommen, {username}!</h1>
-      </header>
-    );
-  }
-  
-  export default Header;
-  
+  return (
+    <header style={{ padding: '1rem', background: '#f4f4f4' }}>
+      <h2>Social Media App</h2>
+      {username && <p>Welcome, {username} 👋</p>}
+    </header>
+  );
+}
+
+export default Header;
