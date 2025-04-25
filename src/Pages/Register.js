@@ -13,8 +13,32 @@ function Register() {
       setError("Both fields are required");
       return;
     }
- 
-      navigate("/");
+    try {
+      const response = await fetch('http://localhost:3001/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: username,
+          password: userpassword
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || "Registration failed");
+      } else {
+        alert("Registration successful!");
+        navigate("/login"); // Redirect to homepage or login
+      }
+
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong. Please try again later.");
+    }
+      
     
   };
   
