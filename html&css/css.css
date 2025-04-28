@@ -22,3 +22,9 @@ div.content > p { padding-left: 25px; }
 p:hover {
   border: 2px solid green;
 }
+/* Add this CSS to your styles */
+.form-group {
+  display: flex;
+  align-items: center; /* Align items vertically centered */
+  gap: 10px; /* Space between label and input */
+}
