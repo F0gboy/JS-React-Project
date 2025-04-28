@@ -1,6 +1,9 @@
 import React from 'react';
 import Header from '../Components/Header';
 import { useLocation } from 'react-router-dom';
+import Post from '../Components/Post';
+
+
 function Home() {
   const location=useLocation();
   const username=location.state?.username|| "Guest";
@@ -8,7 +11,6 @@ function Home() {
   return (<div>
     <Header username={username}/>
   </div>);
-import Post from '../Components/Post';
 
 function Home() {
   return (
@@ -19,4 +21,8 @@ function Home() {
   );
 }
 
+}
+
 export default Home;
+
+
