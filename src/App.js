@@ -29,7 +29,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home username={username} />} />*/
         {/* fallback route */}
-        <Route path="*" element={<Home username={username} />} />
+        <Route path="*" element={<Login username={username} />} />
       </Routes>
     </Router>
   );
