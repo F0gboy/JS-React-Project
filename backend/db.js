@@ -1,14 +1,22 @@
-const sqlite3 = require('sqlite3').verbose();
+const fs = require('fs');
 const path = require('path');
+const sqlite3 = require('sqlite3').verbose();
 
-// Resolve the path to the database file in the backend folder
-const dbPath = 'c:\\Users\\zappe\\JS-React-Project\\backend\\database.db'; // Use database.db in the backend folder
+// Make sure the backend folder exists
+const dbDir = path.resolve(__dirname);
+const dbPath = path.join(dbDir, 'database.db');
+
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir, { recursive: true });
+}
+
+console.log('Resolved DB path:', dbPath);
 
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
     console.error('Error opening database:', err.message);
   } else {
-    console.log('Connected to the SQLite database.');
+    console.log('Connected to the SQLite database ✅');
   }
 });
 
@@ -30,13 +38,7 @@ db.serialize(() => {
       timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (user_id) REFERENCES users(id)
     )
-  `, (err) => {
-    if (err) {
-      console.error('Error creating posts table:', err.message);
-    } else {
-      console.log('Posts table created or already exists.');
-    }
-  });
+  `);
 
   db.run(`
     CREATE TABLE IF NOT EXISTS comments (

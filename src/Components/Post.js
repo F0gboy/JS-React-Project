@@ -8,7 +8,7 @@ function Post() {
 
   // Fetch posts from backend
   useEffect(() => {
-    fetch('http://localhost:5000/posts')
+    fetch('http://localhost:3001/posts')
       .then((res) => res.json())
       .then((data) => {
         // Sort posts by timestamp in descending order
@@ -20,7 +20,7 @@ function Post() {
   // Handle new post submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:5000/posts', {
+    fetch('http://localhost:3001/posts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ user_id: userId, content: newPost }),
