@@ -35,7 +35,7 @@ function Login () {
         setError(data.error || "Login failed");
       } else {
         alert("Login successful!");
-        navigate('/home', { state: { username } });
+        navigate('/home', { state: { username, userId: data.userId } }); // Pass userId
       }
   
     } catch (err) {

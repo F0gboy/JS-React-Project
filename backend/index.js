@@ -55,7 +55,20 @@ app.post('/posts', (req, res) => {
       console.error('Error creating post:', err.message);
       return res.status(500).json({ error: err.message });
     }
-    res.status(201).json({ id: this.lastID, user_id, content, timestamp: new Date() });
+    // Fetch the username of the user who created the post
+    db.get('SELECT username FROM users WHERE id = ?', [user_id], (err, user) => {
+      if (err) {
+        console.error('Error fetching username:', err.message);
+        return res.status(500).json({ error: err.message });
+      }
+      res.status(201).json({
+        id: this.lastID,
+        user_id,
+        username: user.username,
+        content,
+        timestamp: new Date(),
+      });
+    });
   });
 });
 
