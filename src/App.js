@@ -9,7 +9,7 @@ function App() {
   const [username, setUsername] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:5000/posts')
+    fetch('http://localhost:3001/posts')
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error('Error fetching posts:', error));
