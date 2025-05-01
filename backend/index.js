@@ -79,10 +79,8 @@ app.get('/', (req, res) => {
 // REGISTER route
 app.post('/register', (req, res) => {
   const { username, password } = req.body;
-
   db.get(`SELECT * FROM users WHERE username = ?`, [username], (err, row) => {
     if (err) return res.status(500).json({ error: 'Database error' });
-
     if (row) {
       return res.status(400).json({ error: 'Username already exists' });
     }
@@ -101,12 +99,9 @@ app.post('/register', (req, res) => {
 // LOGIN route
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
-
   db.get(`SELECT * FROM users WHERE username = ?`, [username], (err, user) => {
     if (err) return res.status(500).json({ error: 'Database error' });
-
     if (!user) return res.status(400).json({ error: 'User not found' });
-
     if (user.password !== password) {
       return res.status(401).json({ error: 'Incorrect password' });
     }
