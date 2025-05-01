@@ -10,20 +10,39 @@ function Post({ userId }) {
   const [likedPosts, setLikedPosts] = useState({});
   // Store comment inputs keyed by post ID
   const [commentInputs, setCommentInputs] = useState({});
+  // Store comments for each post
+  const [comments, setComments] = useState({});
 
-  // Fetch existing posts from backend
+  // Fetch existing posts and their comments from backend
   useEffect(() => {
     fetch('http://localhost:3001/posts')
       .then((res) => res.json())
       .then((data) => {
         const sorted = data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
         setPosts(sorted);
+        // Fetch comments for each post after posts are fetched
+        sorted.forEach(post => {
+          fetchComments(post.id);
+        });
       })
       .catch((err) => {
         console.error('Error fetching posts:', err);
         setError('Failed to fetch posts');
       });
   }, []);
+
+  // Fetch comments for a specific post
+  const fetchComments = (postId) => {
+    fetch(`http://localhost:3001/posts/${postId}/comments`)
+      .then((res) => res.json())
+      .then((data) => {
+        setComments((prevComments) => ({
+          ...prevComments,
+          [postId]: data,
+        }));
+      })
+      .catch((err) => console.error('Error fetching comments:', err));
+  };
 
   // Handle new post submission
   const handleSubmit = async (e) => {
@@ -110,8 +129,8 @@ function Post({ userId }) {
         body: JSON.stringify({ post_id: postId, user_id: userId, comment }),
       });
       if (!res.ok) throw new Error('Failed to add comment');
-      // Optionally, you could update a comments array for the post here
       setCommentInputs({ ...commentInputs, [postId]: '' });
+      fetchComments(postId); // Re-fetch comments after submitting
     } catch (error) {
       console.error('Error adding comment:', error);
     }
@@ -149,14 +168,25 @@ function Post({ userId }) {
                 {likedPosts[post.id] ? 'Unlike' : 'Like'} ({post.likes_count || 0})
               </button>
             </div>
-            <div className="post-comment">
-              <input
-                type="text"
-                value={commentInputs[post.id] || ''}
-                onChange={(e) => handleCommentChange(post.id, e.target.value)}
-                placeholder="Write a comment..."
-              />
-              <button onClick={() => handleCommentSubmit(post.id)}>Comment</button>
+
+            <div className="post-comments">
+              <div className="comment-input">
+                <input
+                  type="text"
+                  value={commentInputs[post.id] || ''}
+                  onChange={(e) => handleCommentChange(post.id, e.target.value)}
+                  placeholder="Write a comment..."
+                />
+                <button onClick={() => handleCommentSubmit(post.id)}>Comment</button>
+              </div>
+
+              <div className="comments-list">
+                {comments[post.id] && comments[post.id].map((comment) => (
+                  <div key={comment.id} className="comment">
+                    <p><strong>{comment.username}:</strong> {comment.comment}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         ))}

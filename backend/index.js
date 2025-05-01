@@ -151,3 +151,21 @@ app.post('/login', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is listening on http://localhost:${PORT}`);
 });
+
+// GET route to fetch comments for a specific post
+app.get('/posts/:id/comments', (req, res) => {
+  const postId = req.params.id;
+  db.all(`
+    SELECT comments.*, users.username
+    FROM comments
+    JOIN users ON comments.user_id = users.id
+    WHERE comments.post_id = ?
+    ORDER BY comments.timestamp ASC
+  `, [postId], (err, rows) => {
+    if (err) {
+      console.error('Error fetching comments:', err.message);
+      return res.status(500).json({ error: err.message });
+    }
+    res.json(rows);
+  });
+});
