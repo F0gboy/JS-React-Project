@@ -14,7 +14,7 @@ function App() {
 
       <nav style={{ display: 'flex', gap: '1rem', padding: '1rem', background: '#eee' }}>
         {/* <Link to="/">Home</Link> */}
-        <Link to="/login">Login</Link>
+        <Link to="/login">Log in / Log out </Link>
         <Link to="/register">Register</Link>
       </nav>
 

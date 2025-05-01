@@ -30,13 +30,16 @@ function Login () {
       });
   
       const data = await response.json();
-  
       if (!response.ok) {
         setError(data.error || "Login failed");
       } else {
         alert("Login successful!");
-        navigate('/home', { state: { username } });
+        
+        navigate('/home', { state: { username: data.username, userId: data.userId } });
       }
+      
+  
+     
   
     } catch (err) {
       console.error(err);
